@@ -28,13 +28,12 @@ jobs:
         uses: r-lib/actions/setup-r@ffe45a39586f073cc2e9af79c4ba563b657dc6e3
         with:
           r-version: ${{ matrix.r-version }} 
-  example:
-    name: sample comment
+  fixed_command:
+    if: startsWith(github.event.comment.body, '/fixed')
+    name: fixed
     runs-on: macOS-latest
     steps:
-      - name: comment PR
-        uses: unsplash/comment-on-pr@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/pr-fetch@master
         with:
-          msg: "Check out this message!"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
