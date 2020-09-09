@@ -29,7 +29,7 @@ jobs:
         #with:
          # r-version: ${{ matrix.r-version }} 
    fixed_command:
-     if: startsWith(github.event.comment.body, '/fixed')
+     if: startsWith(github.event.comment.body, '/Update')
      name: fixed
      runs-on: macOS-latest
      steps:
