@@ -37,7 +37,7 @@ jobs:
       - uses: r-lib/actions/pr-fetch@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "hi" > foo
+      - run: echo "hi" > fixed
       - uses: r-lib/actions/pr-push@master
         with:
           msg: "Check this...."
