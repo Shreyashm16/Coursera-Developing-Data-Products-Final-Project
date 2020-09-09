@@ -37,3 +37,4 @@ jobs:
       - uses: r-lib/actions/pr-fetch@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          msg: "Check this!"
