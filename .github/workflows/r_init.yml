@@ -13,6 +13,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  issues:
 
 jobs:
   build:
@@ -27,10 +28,9 @@ jobs:
         uses: r-lib/actions/setup-r@ffe45a39586f073cc2e9af79c4ba563b657dc6e3
         with:
           r-version: ${{ matrix.r-version }}
-      - name: comment PR
-        uses: Sheyashm16/Coursera-Developing-Data-Products-Final-Project@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Comments  
+      - uses: actions/first-interaction@v1
         with:
-          msg: "Thanks for submitting Pull Request!!"
-          check_for_duplicate_msg: false  # OPTIONAL 
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: 'Thanks for submitting issue!!'
+          pr-message: 'Thanks for submitting Pull Request!!'
