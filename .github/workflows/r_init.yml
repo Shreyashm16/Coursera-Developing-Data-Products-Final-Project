@@ -35,11 +35,3 @@ jobs:
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
-      - name: comment PR
-        uses: Shreyashm16/
-Coursera-Developing-Data-Products-Final-Project@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          msg: "Thanks for your contribution!"
-          check_for_duplicate_msg: false 
