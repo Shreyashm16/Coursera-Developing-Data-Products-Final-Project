@@ -1,13 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-#
-# See https://github.com/r-lib/actions/tree/master/examples#readme for
-# additional example workflows available for the R community.
-
-name: R
-
+name: r_init
 on:
   push:
     branches: [ master ]
@@ -15,19 +6,18 @@ on:
     branches: [ master ]
   issue_comment:
     types: [created]
-
 jobs:
-   #build:
-    #runs-on: macOS-latest
-    #strategy:
-     # matrix:
-      #  r-version: [3.5, 3.6]
-    #steps:
-     # - uses: actions/checkout@v2
-      #- name: Set up R ${{ matrix.r-version }}
-       # uses: r-lib/actions/setup-r@ffe45a39586f073cc2e9af79c4ba563b657dc6e3
-        #with:
-         # r-version: ${{ matrix.r-version }} 
+   build:
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        r-version: [3.5, 3.6]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up R ${{ matrix.r-version }}
+        uses: r-lib/actions/setup-r@ffe45a39586f073cc2e9af79c4ba563b657dc6e3
+        with:
+          r-version: ${{ matrix.r-version }} 
    fixed_command:
      if: startsWith(github.event.comment.body, '/Update')
      name: fixed
